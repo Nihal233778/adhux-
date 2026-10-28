@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad‑Supported Site · Direct Link</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f8f9ff 0%, #eef2fa 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            color: #1e293b;
+        }
+
+        .card {
+            max-width: 680px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        .icon {
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #334155;
+            margin-bottom: 2rem;
+            padding: 0 0.5rem;
+        }
+
+        .script-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #ffffffcc;
+            backdrop-filter: blur(4px);
+            border-radius: 100px;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            margin-bottom: 1rem;
+            word-break: break-all;
+            justify-content: center;
+            flex-wrap: wrap;
+            transition: background 0.2s;
+        }
+
+        .script-badge:hover {
+            background: #ffffff;
+            border-color: #94a3b8;
+        }
+
+        .script-badge span {
+            background: #e2e8f0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: #1e293b;
+            letter-spacing: 0.3px;
+        }
+
+        .link-section {
+            background: #f1f5f9;
+            border-radius: 1.25rem;
+            padding: 1.25rem;
+            margin: 1.75rem 0;
+            border-left: 5px solid #3b82f6;
+            text-align: left;
+        }
+
+        .link-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #475569;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .direct-link {
+            display: inline-block;
+            background: #ffffff;
+            border-radius: 60px;
+            padding: 0.65rem 1.5rem;
+            font-size: 0.9rem;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+            text-decoration: none;
+            word-break: break-all;
+            transition: all 0.15s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .direct-link:hover {
+            background: #eff6ff;
+            border-color: #3b82f6;
+            text-decoration: underline;
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.1);
+        }
+
+        .direct-link:active {
+            transform: scale(0.98);
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 4px;
+            margin: 2rem auto 1.5rem;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px #bbf7d0;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #64748b;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .fine-print {
+            opacity: 0.75;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 2rem 1.5rem;
+                border-radius: 2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .description {
+                font-size: 1rem;
+            }
+            .script-badge {
+                font-size: 0.8rem;
+                padding: 0.6rem 1rem;
+            }
+            .direct-link {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">🔗</div>
+        <h1>Scripts &amp; Direct Link</h1>
+        <p class="description">
+            Both external scripts are loaded, and the direct‑link URL is integrated below.
+        </p>
+
+        <div class="script-badge">
+            <span>1</span>
+            //ahsocialnetfor.online/ah.js?slot=aaaaehl
+        </div>
+        <div class="script-badge">
+            <span>2</span>
+            //ahsocialnetfor.online/sw.js?slot=aaaaehl
+        </div>
+
+        <div class="link-section">
+            <div class="link-label">Direct Link</div>
+            <a 
+                href="https://ahsocialnetfor.online/directlink?key=aaaaehl" 
+                class="direct-link" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                title="Open direct link in new tab"
+            >
+                https://ahsocialnetfor.online/directlink?key=aaaaehl
+            </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Scripts injected · direct link ready
+        </div>
+    </div>
+
+    <footer>
+        <p>Scripts from <strong>ahsocialnetfor.online</strong> with slot <code style="background:#e2e8f0; padding:0.1rem 0.3rem; border-radius:6px;">aaaaehl</code>.</p>
+        <p class="fine-print">⚠️ The scripts may be used for analytics or advertising. The direct link opens in a new tab.</p>
+    </footer>
+
+    <!-- 
+        The two scripts from the request, placed at the end of body 
+        to allow the page content to render first.
+    -->
+    <script type="text/javascript" src="//ahsocialnetfor.online/ah.js?slot=aaaaehl"></script>
+    <script type="text/javascript" src="//ahsocialnetfor.online/sw.js?slot=aaaaehl"></script>
+</body>
+</html>
